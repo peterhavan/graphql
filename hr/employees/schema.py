@@ -1,27 +1,26 @@
-import graphene
-
+from graphene import relay, ObjectType
 from graphene_django.types import DjangoObjectType
+from graphene_django.filter import DjangoFilterConnectionField
 
 from hr.employees.models import Category, Employee
 
-
-class CategoryType(DjangoObjectType):
+class CategoryNode(DjangoObjectType):
     class Meta:
         model = Category
+        filter_fields = ['name', 'employees']
+        interfaces = (relay.Node, )
 
-
-class EmployeeType(DjangoObjectType):
+class EmployeeNode(DjangoObjectType):
     class Meta:
         model = Employee
-
+        filter_fields = {
+            'name': ['exact', 'icontains', 'istartswith'],
+        }
+        interfaces = (relay.Node, )
 
 class Query(object):
-    all_categories = graphene.List(CategoryType)
-    all_employees = graphene.List(EmployeeType)
+    category = relay.Node.Field(CategoryNode)
+    all_categories = DjangoFilterConnectionField(CategoryNode)
 
-    def resolve_all_categories(self, info, **kwargs):
-        return Category.objects.all()
-
-    def resolve_all_employees(self, info, **kwargs):
-        # We can easily optimize query count in the resolve method
-        return Employee.objects.select_related('category').all()
+    employee = relay.Node.Field(EmployeeNode)
+    all_employees = DjangoFilterConnectionField(EmployeeNode)

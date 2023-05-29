@@ -1,14 +1,14 @@
 [
   {
     "fields": {
-      "name": "Dairy"
+      "name": "Full-Time"
     },
     "model": "employees.category",
     "pk": 1
   },
   {
     "fields": {
-      "name": "Meat"
+      "name": "Part-Time"
     },
     "model": "employees.category",
     "pk": 2
@@ -16,8 +16,8 @@
   {
     "fields": {
       "category": 1,
-      "name": "Eggs",
-      "notes": "Good old eggs"
+      "name": "Adonai Rajni",
+      "salary": 22000
     },
     "model": "employees.employee",
     "pk": 1
@@ -25,8 +25,8 @@
   {
     "fields": {
       "category": 1,
-      "name": "Milk",
-      "notes": "Comes from a cow"
+      "name": "Džejlana Szabina",
+      "salary": 60000
     },
     "model": "employees.employee",
     "pk": 2
@@ -34,8 +34,8 @@
   {
     "fields": {
       "category": 2,
-      "name": "Beef",
-      "notes": "Much like milk, this comes from a cow"
+      "name": "Karine Mirek",
+      "salary": 33000
     },
     "model": "employees.employee",
     "pk": 3
@@ -43,8 +43,8 @@
   {
     "fields": {
       "category": 2,
-      "name": "Chicken",
-      "notes": "Definitely doesn't come from a cow"
+      "name": "Nathalie Cornelius",
+      "salary": 88000
     },
     "model": "employees.employee",
     "pk": 4

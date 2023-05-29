@@ -10,7 +10,7 @@ class Category(models.Model):
 
 class Employee(models.Model):
     name = models.CharField(max_length=100)
-    notes = models.TextField()
+    salary = models.IntegerField()
     category = models.ForeignKey(
         Category, related_name='employees', on_delete=models.CASCADE)
 
